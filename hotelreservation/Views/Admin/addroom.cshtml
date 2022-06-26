@@ -1,0 +1,63 @@
+﻿@model hotelreservation.Models.tbl_room
+
+@{
+    ViewBag.Title = "addroom";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="container-sm mt-lg-5">
+                <!-- general form elements -->
+                <div class="card card-gray-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Room</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        <form>
+                            @Html.AntiForgeryToken()
+                            <div class="card-body">
+                                @if (ViewBag.saveresult != null)
+                                {
+                                    <p class="alert alert-success">@ViewBag.saveresult</p>
+                                }
+                                @Html.ValidationSummary(true,"",new {@class = "text-danger"})
+
+                            <div class="form-group">
+                                <label for="">Available Room</label>
+                                <input type="text" class="form-control" id="" required name="no_of_room" placeholder="Enter no. of room">
+                                @Html.ValidationMessageFor(model => model.no_of_room, "", new { @class = "text-danger" })
+                            </div>
+                                
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.roomtype_id, "Select Room type", htmlAttributes: new { @class = "control-label col-md-2"})
+                                    
+                                    @Html.DropDownList("roomtype_id", null, htmlAttributes: new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.roomtype_id, "", new { @class = "text-danger" })
+                                    
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-dark">Add</button>
+                            </div>
+
+                        </form>
+                    }
+                </div>
+                <!-- /.card -->
+
+
+
+            </div>
+            <!--/.col (left) -->
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>

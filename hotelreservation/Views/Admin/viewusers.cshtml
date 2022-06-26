@@ -1,0 +1,82 @@
+﻿@model IEnumerable<hotelreservation.Models.tbl_customer>
+
+@{
+    ViewBag.Title = "viewusers";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>viewusers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contact_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aadharcard_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpassword)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pincode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aadharcard_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpassword)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cust_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cust_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cust_id })
+        </td>*@
+    </tr>
+}
+
+</table>

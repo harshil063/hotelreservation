@@ -1,0 +1,98 @@
+﻿@model hotelreservation.Models.tbl_customer
+@{
+    ViewBag.Title = "SignUp";
+}
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+
+            </head>
+    <body>
+        <!-- Contact Start -->
+        <!-- Contact Start -->
+        <div class="container-fluid bg-white">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-5">
+                        <div class="d-flex flex-column justify-content-center  h-100 p-5">
+                            <div class="col-lg-7">
+                                <div class="d-flex flex-column align-items-center justify-content-center h-100 ">
+                                    <img class="h-100" src="@Url.Content("/Content/img/feature.jpg")" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-7 mb-5 my-lg-5 py-5 pl-lg-5">
+                        <div class="contact-form">
+                            <div id="success"></div>
+                            @using (Html.BeginForm("SignUp", "Customer", FormMethod.Post))
+                            {
+                        <form method="post" action="">
+                            <h4>Sign-Up Here</h4>
+                            <hr />
+                            <div class="control-group">
+                                <input type="text" class="form-control mb-4  p-4" placeholder="Enter First Name" name="fname" required="required" data-validation-required-message="Please enter your First name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control mb-4 p-4" placeholder="Enter Last Name" required="required" name="lname" data-validation-required-message="Please enter your last name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4 mb-4" placeholder="Enter City" required="required" name="city" data-validation-required-message="Please enter your city" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4 mb-4" placeholder="Enter Pincode" required="required" name="pincode" data-validation-required-message="Please enter your pincode" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4 mb-4" placeholder="Enter Contact No" name="contact_no" required="required" data-validation-required-message="Please enter your contact no" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="email" class="form-control p-4 mb-4" placeholder="Enter Email" name="email" required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4 mb-4" placeholder="Enter AadharCard No" name="aadharcard_no" required="required" data-validation-required-message="Please enter a aadharcard number" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="password" class="form-control p-4 mb-4" placeholder="Enter Password" name="password" required="required" data-validation-required-message="Please enter a password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="password" class="form-control p-4 mb-4" placeholder="Confirm Password" name="cpassword" required="required" data-validation-required-message="Please confirm your password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div>
+                                <input class="btn btn-primary py-3 px-5" type="submit" name="submit" value="Sign-Up" />
+                            </div>
+                            <div>
+                                @Html.ActionLink("Already Regestered? Login Here","Login")
+                            </div>
+                            <p class="alert alert-success">@ViewBag.saveresult</p>
+                        </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+        <!-- Contact End -->
+    </body>
+</html>

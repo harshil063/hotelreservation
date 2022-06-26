@@ -1,0 +1,61 @@
+﻿@model hotelreservation.Models.tbl_customer
+@{
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+</head>
+<body>
+    <!-- Contact Start -->
+    <div class="container-fluid bg-white mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="d-flex flex-column justify-content-center  h-100 p-5">
+                        <div class="col-lg-7">
+                            <div class="d-flex flex-column align-items-center justify-content-center h-100 ">
+                                <img class="h-100" src=@Url.Content("/Content/img/feature.jpg") alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 mb-5 my-lg-5 py-5 pl-lg-5">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                        @using (Html.BeginForm())
+                        {
+                    <form method="post" action="">
+                        <h4>Log-in Here</h4>
+                        <hr />
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4 mb-4" placeholder="Enter Email" name="email" required="required" data-validation-required-message="Please enter username" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="password" class="form-control p-4 mb-4" placeholder="Enter Password" name="password" required="required" data-validation-required-message="Please enter Password" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div>
+                            <input class="btn btn-primary py-3 px-5" type="submit" name="submit" value="Log-in" />
+                        </div>
+                        <div>
+                            @Html.ActionLink("New User? Create an Account", "SignUp")
+                        </div>
+                        <p class="alert alert-danger" style="width:280px;">@ViewBag.err</p>
+                    </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+</body>
+</html>

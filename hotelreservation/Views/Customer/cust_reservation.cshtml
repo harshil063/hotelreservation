@@ -1,0 +1,225 @@
+﻿@model hotelreservation.Models.tbl_reservation
+
+@{
+    ViewBag.Title = "cust_reserveroom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ID = ViewBag.ID;
+    var room_price = ViewBag.price;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+    <br />
+
+    <section class="probootstrap-section">
+        <div class="container">
+            <div class="row probootstrap-gutter40">
+                <div class="col-md-8">
+                    <h2 class="mt0">Reservation Form</h2>
+                    <form action="" method="post" class="probootstrap-form">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" class="form-control" required value="@Session["cust_fname"]" id="fname" name="fname">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" class="form-control" required value="@Session["cust_lname"]" id="lname" name="lname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="form-field">
+                                <i class="icon icon-mail"></i>
+                                <input type="email" class="form-control" required value="@User.Identity.Name.ToString()" id="email" name="email">
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+            <label for="room">Room</label>
+            <div class="form-field">
+                <i class="icon icon-chevron-down"></i>
+                <select name="room" id="room" class="form-control">
+                    <option value="">Select a Room</option>
+                    <option value="1">Classic Room</option>
+                    <option value="2">Ultra Superior Room</option>
+                    <option value="3">Grand Deluxe Room</option>
+                </select>
+            </div>
+        </div>*@
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date-arrival">Arrival</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-calendar2"></i>
+                                        <input type="date" required class="form-control" id="arrival_date" onchange="cal()" name="arrival_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date-departure">Departure</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-calendar2"></i>
+                                        <input type="date" required class="form-control" id="departure_date" onchange="cal()" name="departure_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<input type="text" class="textbox" id="total_night" oninput="add_number()" name="totalnight" />*@
+
+                        <div class="form-group">
+                            <div class="form-field">
+                                @Html.DropDownList("room_id", null, htmlAttributes: new { @class = "form-control", @hidden = "hidden" })
+                                @Html.ValidationMessageFor(model => model.room_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*<label for="email">cust id</label>*@
+                            <div class="form-field">
+                                <i class="icon icon-mail"></i>
+                                <input type="text" class="form-control" value="@Session["cust_id"]" name="guest_id" hidden>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="adults">Adults</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-chevron-down"></i>
+                                        <select name="no_of_adult" id="adults" class="form-control">
+                                            <option disabled selected>Number of Adults</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>@Session["no_of_room"]</p>
+
+                        <div class="form-group">
+                            <label for="email">Total Amount</label>
+                            <div class="form-field">
+                                <i class="icon icon-mail"></i>
+                                <input type="text" class="form-control" id="total_amount" value="@Session["room_price"]"  name="total_amount">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*<label for="email">Booking Date</label>*@
+                            <div class="form-field">
+                                <i class="icon icon-mail"></i>
+                                <input type="text" class="form-control" id="booking_date" value="@Session["booking_date"]" hidden name="booking_date">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Book a room">
+                        </div>
+                    </form>
+                </div>
+                @*<div class="col-md-4">
+                    <h2 class="mt0">Feedback</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Send Message</a></p>
+                </div>*@
+
+                <div class="col-md-4 mb-3 " style="border:solid; background-color:azure">
+                    <div class="container mt-5">
+                        <h2 class="text-primary text-center font-weight-normal text-uppercase mb-3">selected room</h2>
+                        <hr />
+                        <div class="container-fluid mb-2">
+                            <img src="~/Content/img/@Session["room_photo"]" class="fa-align-center mb-1 mt-1 shadow" style="width:290px; height:150px;" alt="" />
+                        </div>
+
+                        <table border="1" width="330px">
+                            <tr>
+                                <th class="text-center" colspan="2">Booking For</th>
+                            </tr>
+                            <tr>
+                                <td class="text-left font-weight-bold">Room type</td>
+                                <td class="text-right">@Session["room_type"]</td>
+                            </tr>
+
+                            <tr>
+                                <td class="font-weight-bold">Price (Per night)</td>
+                                <td class="text-right">@Session["room_price"] /-</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">Description</td>
+                                <td class="text-right">@Session["room_desc"]</td>
+                            </tr>
+                        </table>
+                        <br />
+
+                        <div class="need-help">
+                            <h3 class="text-primary">Need Booking Help?</h3>
+                            <h5>Phone: <span>+98 98 95547 587</span></h5>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    var totalnight = document.getElementById("total_night");
+    var roomprice = document.getElementById("room_price");
+
+    function add_number() {
+        var first_number = parseFloat(totalnight.value);
+        if (isNaN(first_number)) first_number = 0;
+        var second_number = parseFloat(roomprice.value);
+        if (isNaN(second_number)) second_number = 0;
+        var result = first_number * second_number;
+        document.getElementById("total_amount").value = result;
+    }
+</script>
+
+<script type="text/javascript">
+    function GetDays() {
+        var arrivaldt = new Date(document.getElementById("arrival_date").value);
+        var departuredt = new Date(document.getElementById("departure_date").value);
+        return parseInt((departuredt - arrivaldt) / (24 * 3600 * 1000));
+    }
+
+    function cal() {
+        if (document.getElementById("departure_date")) {
+            document.getElementById("total_amount").value = GetDays() * @Session["room_price"];
+        }
+    }
+
+</script>
+
+
+@*<script type="text/javascript">
+    $('#date_arrival').datepicker();
+    $('#date_departure').datepicker();
+
+    $('#date_departure').change(function () {
+        var diff = $('#date_arrival').datepicker("getDate") - $('#date_departure').datepicker("getDate");
+        $('#diff').text(diff / (1000 * 60 * 60 * 24) * -1);
+    });
+</script>*@

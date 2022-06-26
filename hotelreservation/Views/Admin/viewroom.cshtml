@@ -1,0 +1,64 @@
+﻿@model IEnumerable<hotelreservation.Models.tbl_room>
+@{
+    ViewBag.Title = "viewroom";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Available Rooms</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <p>
+                            @Html.ActionLink("Add New", "addroom")
+                        </p>
+                        <table id="" class="table table-bordered table-hover">
+                            <tr>
+                                <th>
+                                    Available Rooms
+                                </th>
+                                <th>
+                                    Room type
+                                </th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.no_of_room)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbl_roomtype.room_type)
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.room_photo)*@
+                                        <img src="~/Content/img/@item.tbl_roomtype.room_photo" style="height:100px; width:150px;" alt="room" />
+
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("editroom", "Admin", new { id = item.room_id })"><i class="fas fa-edit"></i></a>|
+                                        <a href="@Url.Action("detailsroom", "Admin", new { id = item.room_id })"><i class="fas fa-info-circle" style="color:black"></i></a> |
+                                        <a href="@Url.Action("deleteroom", "Admin", new { id = item.room_id })"><i class="fas fa-trash" style="color:red"></i></a> |
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>

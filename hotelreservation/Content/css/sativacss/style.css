@@ -1,0 +1,535 @@
+/* ------------------------------------------------------------------
+ * Template     : Sativa
+ * File         : style.css
+ * Version      : 1.0
+ * Author       : IMediapixel
+ * Author URI   : http://themeforest.net/user/imediapixel
+ *
+ * IMediapixel Copyright 2019 All Rights Reserved.
+ * ------------------------------------------------------------------ */ 
+
+
+/* ------------------------------------------------------------------
+   
+    [Table of contents]
+    1. Elements
+        1.1. Typhography
+        	 1.1.1. Paragraph
+        	 1.1.2. Link
+        	 1.1.3. Heading
+        	 1.1.4. Separator
+        	 1.1.5. Additional spacer, margin &amp; padding
+        1.2. Buttons
+        	 1.2.1. Buttons Color
+        	 1.2.2. Buttons Style
+        	 1.2.3. Buttons Size
+        1.3. Tabs & Accordion
+        	 1.3.1. Top Tabs
+        	 1.3.2. Bottom Tabs
+        	 1.3.3. Left Tabs
+        	 1.3.4. Right Tabs
+        	 1.3.5. Accordion
+		1.4. List
+			 1.4.1. List Style
+			 1.4.2. List Color
+	 	1.5. Form
+	 	1.6. Overlay
+	 	1.7. Container
+        1.8. Header
+        	 1.8.1. Top Header
+        	 1.8.2. Main Header
+        	 1.8.3. Header Navigation
+        	 1.8.4. Header Logo
+        1.9. Slideshow
+        1.10. Page Heading
+        1.11. Intro Text
+    	1.12. Intro List
+    2. Pages
+        2.1. Homepage
+        	 2.1.1. Feature Block
+        	 2.1.2. Menu Carousel
+        	 2.1.3. Services List
+        	 2.1.4. Testimonial Carousel
+        	 2.1.5. Reservation Form
+        	 2.1.6. Event Box
+        	 2.1.7. Opening Hours
+        2.2. About 
+        	 2.2.1. Block Counter 
+        	 2.2.2. Chef List
+        2.3. Blog
+        	 2.3.1. Blog List
+        	 2.3.2. Blog Grid
+        	 2.3.3. Related Posts 
+        	 2.3.4. Comment Box
+        	 2.3.5. Comment Form 
+        	 2.3.6. Blog Grid
+        	 2.3.7. Blog Paging
+        2.4. Contact
+        2.6. Menu
+        	 2.6.1. Menu Page List
+        	 2.6.2. Menu Page Carousel
+        2.7. Reservation
+        2.9. Testimonials
+    3. Sidebar
+    	3.1. Sidebar Box
+    	3.2. Popular News Widget
+    	3.3. Tags Widget
+    	3.4. Category Widget
+    4. Footer
+    	4.1. Footer to top button
+    	4.2. Footer Logo
+    	4.3. Footer Menu
+    	4.4. Footer Bottom
+    
+------------------------------------------------------------------ */
+
+
+/* ----------------------------------------- 1. Elements ----------------------------------------- */
+/* [ 1.1.1 Typhography  ] */
+
+/* [ 1.1.2 Paragraph ] */
+/* [ 1.1.3 Link ] */
+
+
+/* [ 2.1.3. Pricing ] */
+.impx-promo-pricing {
+	position: relative;
+}
+.impx-promo-pricing.uk-padding,
+.impx-promo-pricing .uk-padding {
+	padding: 30px;
+}
+.impx-promo-pricing:after {
+	position: absolute;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	width: 90%;
+	content: "";
+	display: none;
+}
+.impx-promo-pricing.featured {
+	margin-top: -20px;
+}
+.impx-promo-pricing .bg1,
+.impx-promo-pricing .bg2,
+.impx-promo-pricing .bg3 {
+	background-image: url('../images/bg-pricing-1.html');
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+.impx-promo-pricing .bg2 {
+	background-image: url('../images/bg-pricing-2.html');
+}
+.impx-promo-pricing .bg3 {
+	background-image: url('../images/bg-pricing-3.html');
+}
+.impx-promo-pricing p,
+.impx-promo-pricing ul li {
+	color: rgba(255, 255, 255, 0.9);
+}
+.impx-promo-pricing.featured ul {
+	margin-bottom: 30px;
+}
+.impx-promo-pricing.featured ul li {
+	color: rgba(255, 255, 255, 1.0);
+	font-size: 16px;
+}
+.impx-promo-pricing ul li i {
+	margin-right: 10px;
+}
+/* Spa Pricing */
+.impx-spa-pricing {
+	background-color: #ffffff;
+	transition:all 0.25s ease-in-out;
+	position: relative;
+	border-radius: 5px;
+	box-shadow:rgba(0, 0, 0, 0.03) 0 6px 6px, rgba(0, 0, 0, 0.03) 0 1px 4px;
+}
+.impx-spa-pricing.services-intro {
+	box-shadow: none;
+}
+.impx-spa-price {
+	padding: 0px;
+	padding: 40px 30px 20px 30px;
+	position: relative;
+	margin: 0 auto;
+}
+.impx-spa-price.no-border {
+	box-shadow: none;
+	margin-bottom: 0px !important;
+	padding: 20px 20px 0 20px;
+}
+.impx-spa-price.no-border:after {
+	content: "";
+	position: absolute;
+	border-right: 4px solid #dadada;
+	top: 20px;
+	right: -27px;
+	height: 97%;
+	transform: rotateZ(15deg);
+	-webkit-transform: rotateZ(15deg);
+	-moz-transform: rotateZ(15deg);
+	-o-transform: rotateZ(15deg);
+}
+.impx-spa-pricing li:last-child .impx-spa-price.no-border:after {
+	display: none;
+}
+.impx-spa-price.active {
+	margin-top: -30px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	margin-bottom: -30px;
+	box-shadow:rgba(0, 0, 0, 0.05) 0 8px 8px, rgba(0, 0, 0, 0.05) 0 2px 6px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	width: 86%;
+	margin-left: -2%;
+}
+.impx-spa-price.no-border:hover {
+	box-shadow: none;
+}
+.impx-spa-price-img {
+	position: relative;
+	width: 90%;
+	height: 90%;
+	margin: 0 auto 20px auto;
+}
+.impx-spa-pricing li:first-child .impx-spa-price-img {
+	margin-right: 17px;
+}
+.impx-spa-pricing li:last-child .impx-spa-price-img {
+	margin-left: 19px;
+}
+.impx-spa-pricing .uk-panel-box h4 {
+	font-weight: 700;
+}
+.impx-spa-pricing.services-intro .uk-panel-box h5 {
+	margin-top: 10px;
+}
+.impx-spa-price.active .impx-spa-price-img {
+	width: 94%;
+	height: 94%;
+	margin-bottom: 25px;
+}
+.impx-spa-price.no-border .impx-spa-price-img {
+	margin-bottom: 20px;
+}
+.impx-spa-price-img img {
+	border: 7px solid rgba(49, 169, 169, 1.0);
+}
+.impx-spa-price.active .impx-spa-price-img img {
+	border: 8px solid rgba(242, 94, 134, 1.0);
+}
+.impx-spa-price.no-border .impx-spa-price-caption {
+	position: relative;
+	bottom: auto;
+	left: auto;
+    right: auto;
+  	margin: 0 auto;
+	text-align: center;
+	z-index: 3;
+	padding: 0;
+}
+.impx-spa-price-caption i {
+	color: #31a9a9 !important;
+	font-size: 24px;
+	z-index: 3;
+}
+.impx-spa-price.no-border .impx-spa-price-caption i {
+	font-size: 24px;
+	color: #31a9a9 !important;
+	background-color: transparent;
+	border-radius: 50%;
+	border: 3px solid #9ed7b1;
+	height: 48px;
+	width: 48px;
+	line-height: 48px;
+}
+.impx-spa-price-content {
+	position: relative;
+	z-index: 3;
+	margin: 0;
+}
+.impx-spa-pricing li:first-child .impx-spa-price-content {
+	margin-left: -12px;
+}
+.impx-spa-pricing li:last-child .impx-spa-price-content {
+	margin-left: auto;
+	margin-right: -14px;
+}
+.impx-spa-price-content .impx-separator:before, .impx-spa-price-content .impx-separator:after {
+    background-color: rgba(70, 170, 106, .5);
+}
+.impx-spa-price-content .impx-separator {
+	margin-bottom: 0;
+	width:60%;
+}
+.impx-spa-price.active .impx-spa-price-content .impx-separator {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.impx-spa-price-content .impx-separator i {
+	width: 40px;
+	color: #31a9a9 !important;
+}
+.impx-spa-price.no-border .impx-spa-price-content h4 {
+	margin-bottom: 10px;
+}
+.impx-spa-price-content p {
+	margin-top: 0;
+}
+.impx-spa-price.no-border .impx-spa-price-content p {
+	margin-bottom: 25px;
+}
+.impx-spa-price-content ul {
+	margin-bottom: 30px;
+}
+.impx-spa-price-content h5 {
+	margin-top: 0px;
+	font-size: 14px;
+	width: auto;
+	display: block;
+	text-transform: uppercase;
+	color: #F25E86;
+	display: inline-block;
+	padding: 6px 10px;
+	width: auto;
+	border: 1px solid #F25E86;
+}
+.impx-spa-price.active .impx-spa-price-content h5 {
+	padding: 8px 12px;
+}
+.impx-spa-price.no-border .impx-spa-price-content h5 {
+	margin-bottom: 0;
+	background: transparent;
+	color: #31a9a9;
+	font-size: 16px;
+	letter-spacing: .1px;
+	font-weight: 700;
+	border: none;
+}
+.impx-spa-price-content h5:after {
+	content:""; 
+	background: #78c692; 
+	position: absolute; 
+	bottom: 0px; 
+	left: 0; 
+	right: 0;
+	margin: 0 auto;
+	height: 4px; 
+	width: 14%;
+	display: none;
+}
+.impx-spa-price.no-border .impx-spa-price-content h5:after {
+	bottom: -15px; 
+	height: 3px; 
+	height: 3px; 
+	width: 16%;
+	display: block;
+	background-color: #c8c8c8;
+}
+.impx-spa-price-content .uk-grid-divider {
+	margin: 10px auto;
+	width: 40%;
+}
+.about-highlight img {
+	position: relative;
+	bottom: -7px;
+}
+.history-list {
+	position: relative;
+}
+.history-list li {
+	position: relative;
+	border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.history-list li h4 {
+	margin-bottom: 10px !important;
+}
+.history-list li .impx-text-large {
+	line-height: 1.56rem;
+}
+.history-list li:after {
+	content: "\f101";
+    font-family: "FontAwesome";
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color:  rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    right: -22px;
+    top: 43%;
+    text-align: center;
+
+}
+.history-list li:last-child:after {
+	display: none;
+}
+
+/* Gallery Page */
+.uk-subnav-pill.impx-gallery-filter > * {
+	padding-left: 10px;
+}
+.uk-subnav-pill.impx-gallery-filter > * > a,
+.uk-subnav-pill.impx-gallery-filter > * > a{
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	color: #6B6B6B;
+	background-color: rgba(255, 255, 255, 0.5);
+	font-weight: 400;
+}
+.uk-subnav-pill.impx-gallery-filter > * > a:hover,
+.uk-subnav-pill.impx-gallery-filter > * > a:focus{
+	background-color: #31a9a9;
+	color: #ffffff;
+}
+.uk-subnav-pill.impx-gallery-filter > .uk-active > a {
+	background-color: #31a9a9;
+	color: #ffffff;
+	border: 1px solid #31a9a9;
+}
+.uk-subnav-pill.impx-gallery-filter>:hover a {
+	background-color: #31a9a9;
+	color: #ffffff;
+	border: 1px solid #31a9a9;
+}
+
+
+/* [ 3.3. Tags Widget ] */
+.impx-tags-widget {
+	list-style-type: none;
+	padding: 0;
+}
+.impx-tags-widget li {
+	display: inline-block;
+	margin-right: 6px;
+	margin-bottom: 16px;
+}
+.impx-tags-widget li a {
+	border: 1px solid #eaeaea;
+	padding: 6px 10px;
+	color: inherit;
+}
+.impx-tags-widget li a:hover {
+	color: #ffffff;
+	background-color: #31a9a9;
+	border-color: #31a9a9;
+}
+
+
+/* [ 3.2. Popular News Widget ] */
+.impx-popular-news {
+	list-style-type: none;
+	padding: 0;
+}
+.impx-popular-news li:last-child {
+	border: none;
+}
+.impx-popular-news li .impx-post-meta,
+.impx-related-news li .impx-post-meta {
+	padding: 0;
+	margin-top: 10px;
+}
+.impx-popular-news li .impx-post-meta li,
+.impx-related-news li .impx-post-meta li {
+	list-style-type: none;
+}
+.impx-popular-news li .impx-post-meta li a {
+	color: inherit;
+}
+
+/* [ 3.4. Category Widget ] */
+.impx-cat-list li {
+	position: relative;
+}
+.impx-cat-list li a {
+	position: relative;
+	display: block;
+	color: inherit;
+}
+.impx-cat-list li a:after {
+	content: "\f105";
+	position: absolute;
+	right: 0;
+	font-family: FontAwesome;
+	font-size: 18px;
+}
+
+/* [ 3.4. Search Widget ] */
+.impx-sidebar .uk-search.uk-search-default {
+	width: 100%;
+}
+.impx-sidebar .uk-search .uk-search-input {
+	background-color: #ffffff;
+}
+/* Footer */
+#impx-footer {
+	background-color: #282828;
+}
+#impx-footer p {
+	color: #666666;
+}
+
+
+/* Instafeed */
+#instafeed {
+	width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 30px;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+#instafeed li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#instafeed li:empty {
+    display: none;
+}
+#instafeed li img {
+    width: 72px;
+    height: 72px;
+}
+
+/* To Top*/
+.to-top {
+    width: 28px;
+    height: 32px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+    background: #31a9a9;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    display: none;
+    z-index: 2;
+}
+
+.uk-panel {
+                padding: 10px;
+                text-align: center;
+            }
+
+            :nth-child(10n-9) > .uk-panel { background: rgba(0,0,0,0.1); }
+            :nth-child(10n-8) > .uk-panel { background: rgba(0,0,0,0.15); }
+            :nth-child(10n-7) > .uk-panel { background: rgba(0,0,0,0.2); }
+            :nth-child(10n-6) > .uk-panel { background: rgba(0,0,0,0.25); }
+            :nth-child(10n-5) > .uk-panel { background: rgba(0,0,0,0.3); }
+            :nth-child(10n-4) > .uk-panel { background: rgba(0,0,0,0.35); }
+            :nth-child(10n-3) > .uk-panel { background: rgba(0,0,0,0.40); }
+            :nth-child(10n-2) > .uk-panel { background: rgba(0,0,0,0.45); }
+            :nth-child(10n-1) > .uk-panel { background: rgba(0,0,0,0.50); }
+            :nth-child(10n) > .uk-panel { background: rgba(0,0,0,0.55); }

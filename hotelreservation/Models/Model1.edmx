@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_name" Type="varchar" MaxLength="20" />
+          <Property Name="ad_password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="pincode" Type="int" />
+          <Property Name="contact_no" Type="bigint" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="aadharcard_no" Type="bigint" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="cpassword" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_feedback">
+          <Key>
+            <PropertyRef Name="feedback_id" />
+          </Key>
+          <Property Name="feedback_id" Type="int" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="50" />
+          <Property Name="cust_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="amount" Type="int" />
+          <Property Name="res_id" Type="int" />
+          <Property Name="cust_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_reservation">
+          <Key>
+            <PropertyRef Name="res_id" />
+          </Key>
+          <Property Name="res_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="30" />
+          <Property Name="lname" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="30" />
+          <Property Name="arrival_date" Type="date" />
+          <Property Name="departure_date" Type="date" />
+          <Property Name="no_of_adult" Type="int" />
+          <Property Name="total_amount" Type="int" />
+          <Property Name="booking_date" Type="date" />
+          <Property Name="room_id" Type="int" />
+          <Property Name="guest_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_room">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="no_of_room" Type="varchar" MaxLength="50" />
+          <Property Name="roomtype_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_roomtype">
+          <Key>
+            <PropertyRef Name="roomtype_id" />
+          </Key>
+          <Property Name="roomtype_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_type" Type="varchar" MaxLength="20" />
+          <Property Name="room_photo" Type="varchar" MaxLength="50" />
+          <Property Name="room_price" Type="int" />
+          <Property Name="room_description" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_tbl_feedback_tbl_customer">
+          <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
+          <End Role="tbl_feedback" Type="Self.tbl_feedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_feedback">
+              <PropertyRef Name="feedback_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_payment_tbl_customer">
+          <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
+          <End Role="tbl_payment" Type="Self.tbl_payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_payment">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_payment_tbl_payment">
+          <End Role="tbl_reservation" Type="Self.tbl_reservation" Multiplicity="1" />
+          <End Role="tbl_payment" Type="Self.tbl_payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_reservation">
+              <PropertyRef Name="res_id" />
+            </Principal>
+            <Dependent Role="tbl_payment">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_reservation_tbl_customer">
+          <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="0..1" />
+          <End Role="tbl_reservation" Type="Self.tbl_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_reservation">
+              <PropertyRef Name="guest_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_reservation_tbl_room">
+          <End Role="tbl_room" Type="Self.tbl_room" Multiplicity="0..1" />
+          <End Role="tbl_reservation" Type="Self.tbl_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="tbl_reservation">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_room_tbl_roomtype">
+          <End Role="tbl_roomtype" Type="Self.tbl_roomtype" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_room" Type="Self.tbl_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_roomtype">
+              <PropertyRef Name="roomtype_id" />
+            </Principal>
+            <Dependent Role="tbl_room">
+              <PropertyRef Name="roomtype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelDBModelStoreContainer">
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_feedback" EntityType="Self.tbl_feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_payment" EntityType="Self.tbl_payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_reservation" EntityType="Self.tbl_reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_room" EntityType="Self.tbl_room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_roomtype" EntityType="Self.tbl_roomtype" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_feedback_tbl_customer" Association="Self.FK_tbl_feedback_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_feedback" EntitySet="tbl_feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_payment_tbl_customer" Association="Self.FK_tbl_payment_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_payment" EntitySet="tbl_payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_payment_tbl_payment" Association="Self.FK_tbl_payment_tbl_payment">
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+            <End Role="tbl_payment" EntitySet="tbl_payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_reservation_tbl_customer" Association="Self.FK_tbl_reservation_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_reservation_tbl_room" Association="Self.FK_tbl_reservation_tbl_room">
+            <End Role="tbl_room" EntitySet="tbl_room" />
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_room_tbl_roomtype" Association="Self.FK_tbl_room_tbl_roomtype">
+            <End Role="tbl_roomtype" EntitySet="tbl_roomtype" />
+            <End Role="tbl_room" EntitySet="tbl_room" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ad_password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="Int32" />
+          <Property Name="contact_no" Type="Int64" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aadharcard_no" Type="Int64" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_reservation" Relationship="HotelDBModel.FK_tbl_reservation_tbl_customer" FromRole="tbl_customer" ToRole="tbl_reservation" />
+          <NavigationProperty Name="tbl_payment" Relationship="HotelDBModel.FK_tbl_payment_tbl_customer" FromRole="tbl_customer" ToRole="tbl_payment" />
+          <NavigationProperty Name="tbl_feedback" Relationship="HotelDBModel.FK_tbl_feedback_tbl_customer" FromRole="tbl_customer" ToRole="tbl_feedback" />
+        </EntityType>
+        <EntityType Name="tbl_room">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="no_of_room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomtype_id" Type="Int32" />
+          <NavigationProperty Name="tbl_roomtype" Relationship="Self.FK_tbl_room_tbl_roomtype" FromRole="tbl_room" ToRole="tbl_roomtype" />
+          <NavigationProperty Name="tbl_reservation" Relationship="HotelDBModel.FK_tbl_reservation_tbl_room" FromRole="tbl_room" ToRole="tbl_reservation" />
+        </EntityType>
+        <EntityType Name="tbl_roomtype">
+          <Key>
+            <PropertyRef Name="roomtype_id" />
+          </Key>
+          <Property Name="roomtype_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="room_price" Type="Int32" />
+          <NavigationProperty Name="tbl_room" Relationship="Self.FK_tbl_room_tbl_roomtype" FromRole="tbl_roomtype" ToRole="tbl_room" />
+          <Property Name="room_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="room_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tbl_room_tbl_roomtype">
+          <End Role="tbl_roomtype" Type="Self.tbl_roomtype" Multiplicity="0..1" />
+          <End Role="tbl_room" Type="Self.tbl_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_roomtype">
+              <PropertyRef Name="roomtype_id" />
+            </Principal>
+            <Dependent Role="tbl_room">
+              <PropertyRef Name="roomtype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" />
+          <EntitySet Name="tbl_room" EntityType="Self.tbl_room" />
+          <EntitySet Name="tbl_roomtype" EntityType="Self.tbl_roomtype" />
+          <AssociationSet Name="FK_tbl_room_tbl_roomtype" Association="Self.FK_tbl_room_tbl_roomtype">
+            <End Role="tbl_roomtype" EntitySet="tbl_roomtype" />
+            <End Role="tbl_room" EntitySet="tbl_room" />
+          </AssociationSet>
+          <EntitySet Name="tbl_reservation" EntityType="HotelDBModel.tbl_reservation" />
+          <AssociationSet Name="FK_tbl_reservation_tbl_customer" Association="HotelDBModel.FK_tbl_reservation_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_reservation_tbl_room" Association="HotelDBModel.FK_tbl_reservation_tbl_room">
+            <End Role="tbl_room" EntitySet="tbl_room" />
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+          </AssociationSet>
+          <EntitySet Name="tbl_payment" EntityType="HotelDBModel.tbl_payment" />
+          <AssociationSet Name="FK_tbl_payment_tbl_customer" Association="HotelDBModel.FK_tbl_payment_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_payment" EntitySet="tbl_payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_payment_tbl_payment" Association="HotelDBModel.FK_tbl_payment_tbl_payment">
+            <End Role="tbl_reservation" EntitySet="tbl_reservation" />
+            <End Role="tbl_payment" EntitySet="tbl_payment" />
+          </AssociationSet>
+          <EntitySet Name="tbl_feedback" EntityType="HotelDBModel.tbl_feedback" />
+          <AssociationSet Name="FK_tbl_feedback_tbl_customer" Association="HotelDBModel.FK_tbl_feedback_tbl_customer">
+            <End Role="tbl_customer" EntitySet="tbl_customer" />
+            <End Role="tbl_feedback" EntitySet="tbl_feedback" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_reservation">
+          <Key>
+            <PropertyRef Name="res_id" />
+          </Key>
+          <Property Name="res_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="arrival_date" Type="DateTime" Precision="0" />
+          <Property Name="departure_date" Type="DateTime" Precision="0" />
+          <Property Name="no_of_adult" Type="Int32" />
+          <Property Name="total_amount" Type="Int32" />
+          <Property Name="booking_date" Type="DateTime" Precision="0" />
+          <Property Name="room_id" Type="Int32" />
+          <Property Name="guest_id" Type="Int32" />
+          <NavigationProperty Name="tbl_customer" Relationship="HotelDBModel.FK_tbl_reservation_tbl_customer" FromRole="tbl_reservation" ToRole="tbl_customer" />
+          <NavigationProperty Name="tbl_room" Relationship="HotelDBModel.FK_tbl_reservation_tbl_room" FromRole="tbl_reservation" ToRole="tbl_room" />
+          <Property Name="fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_payment" Relationship="HotelDBModel.FK_tbl_payment_tbl_payment" FromRole="tbl_reservation" ToRole="tbl_payment" />
+        </EntityType>
+        <Association Name="FK_tbl_reservation_tbl_customer">
+          <End Type="HotelDBModel.tbl_customer" Role="tbl_customer" Multiplicity="0..1" />
+          <End Type="HotelDBModel.tbl_reservation" Role="tbl_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_reservation">
+              <PropertyRef Name="guest_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_reservation_tbl_room">
+          <End Type="HotelDBModel.tbl_room" Role="tbl_room" Multiplicity="0..1" />
+          <End Type="HotelDBModel.tbl_reservation" Role="tbl_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="tbl_reservation">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="res_id" Type="Int32" />
+          <Property Name="cust_id" Type="Int32" />
+          <NavigationProperty Name="tbl_customer" Relationship="HotelDBModel.FK_tbl_payment_tbl_customer" FromRole="tbl_payment" ToRole="tbl_customer" />
+          <NavigationProperty Name="tbl_reservation" Relationship="HotelDBModel.FK_tbl_payment_tbl_payment" FromRole="tbl_payment" ToRole="tbl_reservation" />
+        </EntityType>
+        <Association Name="FK_tbl_payment_tbl_customer">
+          <End Type="HotelDBModel.tbl_customer" Role="tbl_customer" Multiplicity="1" />
+          <End Type="HotelDBModel.tbl_payment" Role="tbl_payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_payment">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_payment_tbl_payment">
+          <End Type="HotelDBModel.tbl_reservation" Role="tbl_reservation" Multiplicity="1" />
+          <End Type="HotelDBModel.tbl_payment" Role="tbl_payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_reservation">
+              <PropertyRef Name="res_id" />
+            </Principal>
+            <Dependent Role="tbl_payment">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_feedback">
+          <Key>
+            <PropertyRef Name="feedback_id" />
+          </Key>
+          <Property Name="feedback_id" Type="Int32" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_id" Type="Int32" />
+          <NavigationProperty Name="tbl_customer" Relationship="HotelDBModel.FK_tbl_feedback_tbl_customer" FromRole="tbl_feedback" ToRole="tbl_customer" />
+        </EntityType>
+        <Association Name="FK_tbl_feedback_tbl_customer">
+          <End Type="HotelDBModel.tbl_customer" Role="tbl_customer" Multiplicity="1" />
+          <End Type="HotelDBModel.tbl_feedback" Role="tbl_feedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_feedback">
+              <PropertyRef Name="feedback_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelDBModelStoreContainer" CdmEntityContainer="HotelDBEntities1">
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_name" ColumnName="ad_name" />
+                <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_customer">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_customer">
+              <MappingFragment StoreEntitySet="tbl_customer">
+                <ScalarProperty Name="cpassword" ColumnName="cpassword" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="contact_no" ColumnName="contact_no" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="aadharcard_no" ColumnName="aadharcard_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_room">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_room">
+              <MappingFragment StoreEntitySet="tbl_room">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="no_of_room" ColumnName="no_of_room" />
+                <ScalarProperty Name="roomtype_id" ColumnName="roomtype_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_roomtype">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_roomtype">
+              <MappingFragment StoreEntitySet="tbl_roomtype">
+                <ScalarProperty Name="room_description" ColumnName="room_description" />
+                <ScalarProperty Name="room_photo" ColumnName="room_photo" />
+                <ScalarProperty Name="roomtype_id" ColumnName="roomtype_id" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="room_price" ColumnName="room_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_reservation">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_reservation">
+              <MappingFragment StoreEntitySet="tbl_reservation">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="guest_id" ColumnName="guest_id" />
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="booking_date" ColumnName="booking_date" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+                <ScalarProperty Name="no_of_adult" ColumnName="no_of_adult" />
+                <ScalarProperty Name="departure_date" ColumnName="departure_date" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="res_id" ColumnName="res_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_payment">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_payment">
+              <MappingFragment StoreEntitySet="tbl_payment">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="res_id" ColumnName="res_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_feedback">
+            <EntityTypeMapping TypeName="HotelDBModel.tbl_feedback">
+              <MappingFragment StoreEntitySet="tbl_feedback">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

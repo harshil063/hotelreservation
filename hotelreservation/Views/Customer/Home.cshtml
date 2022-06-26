@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src=@Url.Content("/Content/img/carousel-1.jpg") alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 800px;">
+                        <h4 class="text-primary text-uppercase font-weight-normal mb-md-3">Enjoy A Luxury Experience</h4>
+                        <h3 class="display-3 text-white mb-md-4">Book Your Favourite Room Now!</h3>
+                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2 mt-md-4">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img class="w-100" src=@Url.Content("/Content/img/carousel-2.jpg") alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 800px;">
+                        <h4 class="text-primary text-uppercase font-weight-normal mb-md-3">Enjoy A Luxury Experience</h4>
+                        <h3 class="display-3 text-white mb-md-4">Make Your Journey Better</h3>
+                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2 mt-md-4">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-primary" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-primary" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- Projects Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+
+
+        <div class="row mx-1 portfolio-container">
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/room-6.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Standard Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/room-6.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item second">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/portfolio-2.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Deluxe Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/portfolio-2.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item third">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/room-detail-5.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Single Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/room-detail-5.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/portfolio-4.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Duplex Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/portfolio-4.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item second">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/room-menu-3.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Penthouse Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/room-menu-3.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item third">
+                <div class="position-relative overflow-hidden">
+                    <div class="portfolio-img d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src=@Url.Content("/Content/img/portfolio-5.jpg") alt="">
+                    </div>
+                    <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-white mb-4">Twin Room</h4>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-outline-primary m-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="btn btn-outline-primary m-1" href=@Url.Content("/Content/img/portfolio-5.jpg") data-lightbox="portfolio">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

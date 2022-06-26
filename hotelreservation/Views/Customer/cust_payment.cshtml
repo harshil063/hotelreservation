@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "cust_payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var amount = ViewBag.amount;
+}
+<br />
+<br />
+<section class="probootstrap-section ">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <div class="col-md-8" style="">
+                <h2 class="mt0">Payment</h2>
+
+                <div class="pay-money-form mt-40">
+                    <div class="payment-card">
+                        <a href="#"><img src=@Url.Content("/Content/img/pay-card.png") alt=""></a>
+                    </div>
+
+                </div>
+                <hr />
+                <form action="" method="post" class="probootstrap-form">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label for="name">Name on Card</label>
+                        <div class="form-field">
+                            <i class="icon icon-mail"></i>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardnumber">Card number</label>
+                        <div class="form-field">
+                            <i class="icon icon-mail"></i>
+                            <input type="text" class="form-control" placeholder="1111-2222-3333-4444" id="cardnumber" name="cardnumber">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expmonth">Expiry Month</label>
+                        <div class="form-field">
+                            <i class="icon icon-mail"></i>
+                            <input type="text" class="form-control" placeholder="05" id="expmonth" name="expmonth">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="expyear">Expiry Year</label>
+                                <div class="form-field">
+                                    <i class="icon icon-calendar2"></i>
+                                    <input type="text" class="form-control" placeholder="2022" id="expyear" name="expyear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <div class="form-field">
+                                    <i class=""></i>
+                                    <input type="text" class="form-control" placeholder="985" id="cvv" name="cvv">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="form-group">
+                            <label for="room_id">Room Id</label>
+                            <div class="form-field">
+                                <i class="icon icon-mail"></i>
+                                <input type="text" disabled class="form-control" value="@ID" name="room_id">
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label for="email">Total Amount</label>
+                        <div class="form-field">
+                            <i class="icon icon-mail"></i>
+                            <input type="text" class="form-control" value="@Session["t_amount"]" name="total_amount">
+                        </div>
+                    </div>
+                    <p>@Session["noofroom"]</p>
+                    <p>hello</p>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Pay">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <h2 class="mt0">Feedback</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                <p><a href="#" class="btn btn-primary" role="button">Send Message</a></p>
+            </div>
+        </div>
+    </div>
+</section>

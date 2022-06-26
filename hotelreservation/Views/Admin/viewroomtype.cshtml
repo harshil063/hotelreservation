@@ -1,0 +1,89 @@
+﻿@model IEnumerable<hotelreservation.Models.tbl_roomtype>
+
+@{
+    ViewBag.Title = "viewroomtype";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Room Categories</h3>
+                    </div>
+                    
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <p>
+                            @Html.ActionLink("Add New", "addroomtype")
+                        </p>
+                            @if (ViewBag.delresult != null)
+                            {
+                                <p class="alert alert-success">@ViewBag.saveresult</p>
+                            }
+
+                            @if (ViewBag.delresult != null)
+                            {
+                                <p class="alert alert-danger">@ViewBag.delresult</p>
+                            }
+                            <table id="example2" class="table table-bordered table-hover">
+                                <tr>
+                                    <th>Room type</th>
+                                    <th>Room Image</th>
+                                    <th>Room price</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.room_type)
+                                        </td>
+                                        <td>
+                                            @*@Html.DisplayFor(modelItem => item.room_photo)*@
+                                            <img src="~/Content/img/@item.room_photo" style="height:100px; width:150px;" alt="room" />
+                                            
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.room_price)
+                                        </td>
+
+                                        <td style="width:500px;">
+                                            @Html.DisplayFor(modelItem => item.room_description)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("editroomtype", "Admin", new { id = item.roomtype_id })"><i class="fas fa-edit"></i></a>|
+                                            <a href="@Url.Action("detailsroomtype", "Admin", new { id = item.roomtype_id })"><i class="fas fa-info-circle" style="color:black"></i></a> |
+                                            <a href="@Url.Action("deleteroomtype", "Admin", new { id = item.roomtype_id })"><i class="fas fa-trash" style="color:red"></i></a> |
+
+                                        </td>
+                                    </tr>
+                                }
+
+                                <tfoot>
+                                    <tr>
+                                        <th>Room type</th>
+                                        <th>Room Image</th>
+                                        <th>Room price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    <!-- /.card-body -->
+                </div>
+                
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

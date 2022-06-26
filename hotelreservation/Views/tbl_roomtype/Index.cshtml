@@ -1,0 +1,52 @@
+﻿@model IEnumerable<hotelreservation.Models.tbl_roomtype>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.room_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.room_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.room_photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.room_description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.room_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.room_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.room_photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.room_description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.roomtype_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.roomtype_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.roomtype_id })
+        </td>
+    </tr>
+}
+
+</table>

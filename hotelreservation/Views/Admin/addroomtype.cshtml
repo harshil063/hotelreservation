@@ -1,0 +1,84 @@
+﻿@model hotelreservation.Models.tbl_roomtype
+
+@{
+    ViewBag.Title = "addroomtype";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="container-sm mt-lg-5">
+                    <!-- general form elements -->
+                    <div class="card card-gray-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">Add Room Category</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                    <form>
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            @if (ViewBag.saveresult != null)
+                            {
+                                <p class="alert alert-success">@ViewBag.saveresult</p>
+                            }
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Room type</label>
+                                <input type="text" class="form-control" id="" name="room_type" placeholder="Enter room type">
+                            </div>
+
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="room_photo" class="custom-file-input" id="">
+                                    <label class="custom-file-label" for="">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Room price</label>
+                                <input type="text" class="form-control" name="room_price" id="" placeholder="Enter price">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter...." name="room_description"></textarea>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-dark">Add</button>
+                        </div>
+
+                    </form>
+                        }
+                    </div>
+                    <!-- /.card -->
+
+
+
+                </div>
+                <!--/.col (left) -->
+
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+</body>
+</html>

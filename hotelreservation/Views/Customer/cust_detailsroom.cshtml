@@ -1,0 +1,136 @@
+﻿@model hotelreservation.Models.tbl_room
+
+@{
+    ViewBag.Title = "cust_detailsroom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<input type="text" id="textone" />
+<input type="text" id="textTWO" />
+<button onclick="testVariable()">Submit</button>
+<br />
+<span id="spanResult">
+
+</span>*@
+
+
+<div class="mt-4 ml-4">
+    <h3 class="d-sm-block" style="text-align:center;">Check Availability</h3>
+    <form asp-controller="Customer" asp-action="cust_detailsroom" method="get" class="probootstrap-form">
+        @*@Html.AntiForgeryToken()*@
+
+
+
+        <div class="row mt-lg-5">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="date-arrival">Arrival</label>
+                    <div class="form-field">
+                        <i class="icon icon-calendar2"></i>
+                        <input type="date" required class="form-control" id="arrival_date" onchange="cal()" name="arrival_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="date-departure">Departure</label>
+                    <div class="form-field">
+                        <i class="icon icon-calendar2"></i>
+                        <input type="date" required class="form-control" id="departure_date" onchange="cal()" name="departure_date">
+                    </div>
+                </div>
+            </div>
+
+            <select asp-for="roomtypeid" name="roomtypeid" asp-items="@Model.tbl_roomtype.room_type">
+
+                <option value="@Model.room_id">@Model.tbl_roomtype.room_type</option>
+
+            </select>
+
+
+            <!--<div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.room_id, "Select Room type")
+
+
+                @*@Html.DropDownList("roomtype_id",(IEnumerable<SelectListItem>)ViewBag.roomtype_id, htmlAttributes: new { @class = "form -control custom-select" })*@
+                @*@Html.ValidationMessageFor(model => model.roomtype_id, "", new { @class = "text-danger" })*@
+
+            <!--</div>
+        </div>-->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for=""></label>
+                    <div class="form-field">
+                        <input type="submit" onclick="testVariable()" class="btn btn-primary btn-lg" id="submit" name="submit" value="Check Availability">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <p class="blockquote" style="color:red; text-align:center">@ViewBag.avst</p>
+    </form>
+</div>
+
+
+
+
+<!-- Features Start -->
+<div class="container-fluid bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mt-2 mb-2 align-items-center">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100 overflow-hidden">
+                    <img class="h-100" style="height: 80px;" src=~/Content/img/@Model.tbl_roomtype.room_photo alt="">
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-5 mt-5 py-5 pr-lg-5">
+                <h6 class="text-primary font-weight-normal text-uppercase mb-3">Why Choose ?</h6>
+                @*<h1 class="mb-4 section-title">25+ Years Experience In The Interior Design Industry</h1>*@<h1 class="mb-4 section-title"></h1><h1 class="mb-4 section-title"></h1><h1 class="mb-4 section-title"></h1><h1 class="mb-4 section-title"></h1><h1 class="mb-4 section-title"></h1><h1 class="mb-4 section-title"></h1>
+                <h1 class="mb-4 section-title">@Model.tbl_roomtype.room_type </h1>
+                @*<p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>*@<p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p><p class="mb-4"></p>
+                <p class="mb-4">@Model.tbl_roomtype.room_description</p>
+
+                <ul class="list-inline">
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>City View</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>TV</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>Air Conditioning</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>WiFi</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>Personal Items</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>Free parking</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>Mini Bar</h5></li>
+                    <li><h5><i class="far fa-check-square text-primary mr-3"></i>Mini Fridge</h5></li>
+                </ul>
+                @*<p style="font-family:Arial; font-weight:bolder; font-size:xx-large;">&#8377 @Model.room_price / Night</p>*@<p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p>
+                <p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p><p style="font-family:Arial; font-weight:bolder; font-size:xx-large;"></p>
+                <h3>&#8377 @Model.tbl_roomtype.room_price / Night</h3>
+                @if (ViewBag.avst == "Room is available")
+                {
+                    <a href="@Url.Action("cust_reservation", "Customer" , new { id=Model.room_id, price=Model.tbl_roomtype.room_price })" class="btn btn-primary mt-3 py-2 px-4">Reserve</a>
+                }
+                else
+                {
+                    <h3>Check Availability for Booking</h3>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Features End -->
+
+@*<script type="text/javascript">
+    function testVariable() {
+        var strText = document.getElementById("textone").value;
+        var strText1 = document.getElementById("textTWO").value;
+        var result = strText + ' ' + strText1;
+        document.getElementById('spanResult').textContent = result;
+    }
+</script>*@

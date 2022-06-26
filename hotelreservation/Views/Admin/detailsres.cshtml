@@ -1,0 +1,99 @@
+﻿@model hotelreservation.Models.tbl_reservation
+
+@{
+    ViewBag.Title = "detailsres";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>detailsres</h2>
+
+<div>
+    <h4>tbl_reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.arrival_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arrival_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departure_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departure_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.no_of_adult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.no_of_adult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.booking_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.booking_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_customer.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_customer.fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_room.no_of_room)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_room.tbl_roomtype.room_type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.res_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

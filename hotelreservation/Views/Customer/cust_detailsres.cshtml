@@ -1,0 +1,123 @@
+﻿@model hotelreservation.Models.tbl_reservation
+
+@{
+    ViewBag.Title = "cust_detailsres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<section class="content">
+<div class="container-fluid align-content-center" style="margin:auto; padding:10px; width:50%;">
+    <div class="row">
+
+        <div class="card ">
+            <div class="card-header">
+                <h3 class="card-title">Booked Room</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div>
+                    <h4>@Html.DisplayFor(model => model.tbl_room.tbl_roomtype.room_type)</h4>
+                    <hr />
+                    <dl class="dl-horizontal align-content-center">
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.arrival_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.arrival_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.departure_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.departure_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.no_of_adult)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.no_of_adult)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.total_amount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.total_amount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.booking_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.booking_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbl_room.tbl_roomtype.room_type)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tbl_room.tbl_roomtype.room_type)
+                        </dd>
+
+                        <dt>
+                            Login Email
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tbl_customer.email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.fname)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fname)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.lname)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.lname)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.email)
+                        </dd>
+                        <p>
+                            @Html.ActionLink("Back to List", "cust_viewreservation", new { id = Session["cust_id"] })
+                        </p>
+                    </dl>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+</div></section>
